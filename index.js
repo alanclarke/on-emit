@@ -21,23 +21,23 @@ module.exports = function createEmitter () {
     }
   }
 
-  function removeHandler (type, handler, once) {
+  function removeHandler (type, handler, removeOnlyOne) {
     for (var i = 0; i < handlers[type].length; i++) {
       if (handlers[type][i] === handler) {
         handlers[type].splice(i, 1)
-        if (once) return
+        if (removeOnlyOne) return
         i--
       }
     }
   }
 
-  function emit (type, extra) {
+  function emit (type) {
     var i
     for (i = 0; handlers[type] && i < handlers[type].length; i++) {
-      handlers[type][i](type, extra)
+      handlers[type][i].apply(handlers[type][i], arguments)
     }
     for (i = 0; handlers['*'] && i < handlers['*'].length; i++) {
-      handlers['*'][i](type, extra)
+      handlers['*'][i].apply(handlers['*'][i], arguments)
     }
   }
 
