@@ -22,7 +22,7 @@ module.exports = function createEmitter () {
   }
 
   function removeHandler (type, handler, removeOnlyOne) {
-    for (var i = 0; i < handlers[type].length; i++) {
+    for (var i = 0; handlers[type] && i < handlers[type].length; i++) {
       if (handlers[type][i] === handler) {
         handlers[type].splice(i, 1)
         if (removeOnlyOne) return

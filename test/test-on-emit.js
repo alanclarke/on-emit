@@ -100,6 +100,9 @@ describe('on-emit', function () {
       expect(first.calledOnce).to.eql(true)
       expect(second.called).to.eql(false)
     })
+    it('should not throw if type does not exist', function () {
+      emitter.off('blah', first)
+    })
     it('should only remove as many unsubscribe handlers as were unsubscribed', function () {
       emitter.on('blah', first)
       emitter.on('blah', first)()
