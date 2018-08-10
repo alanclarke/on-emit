@@ -9,7 +9,7 @@
   "scripts": {
     "test": "istanbul cover _mocha"
   },
-  "author": "Alan Clarke <hi@alz.io> (alz.io)",
+  "author": "Alan Clarke <code@alz.io> (alz.io)",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
